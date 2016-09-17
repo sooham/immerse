@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context="rafiz.sooham.immerse.views.SetActivity">
     <rafiz.sooham.immerse.datatypes.SetImageView
         android:id="@+id/view"
@@ -17,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:textSize="20sp"
-        android:background="#00FF00"
+        android:background="#388E3C"
         android:textColor="#FFFFFF"
         android:text="Set"/>
 </RelativeLayout>
