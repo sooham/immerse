@@ -35,6 +35,9 @@ public class SetActivity extends AppCompatActivity {
     private Position root;
     private Position topL, topR, botL, botR;
 
+    private Position currNode;
+    private boolean moving;
+
     @AfterViews
     protected void init(){
         String path = getIntent().getStringExtra(Cons.FILEPATH_EXTRA);
@@ -45,21 +48,27 @@ public class SetActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction() & MotionEvent.ACTION_MASK;
-                switch (action)
-                {
-                    case MotionEvent.ACTION_DOWN:
-                    {
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN: {
                         // start
+                        int touch = nodeUnderTouch(event.getX(), event.getY());
+                        if (touch == 0){
+                            currNode = root;
+                            moving = true;
+                        }
                         break;
                     }
-                    case MotionEvent.ACTION_MOVE:
-                    {
-                        // drag
+                    case MotionEvent.ACTION_MOVE: {
+                        if (moving){
+                            currNode.x = event.getX();
+                            currNode.y = event.getY();
+                            view.refresh();
+                        }
                         break;
                     }
-                    case MotionEvent.ACTION_UP:
-                    {
-                        // end
+                    case MotionEvent.ACTION_UP: {
+                        currNode = null;
+                        moving = false;
                         break;
                     }
                 }
@@ -67,12 +76,31 @@ public class SetActivity extends AppCompatActivity {
             }
         });
 
-        root = new Position(view.getWidth()/2, view.getHeight()/2);
-        topL = new Position(view.getWidth()/4, view.getHeight()/4);
-        topR = new Position(3*view.getWidth()/4, view.getHeight()/4);
-        botL = new Position(view.getWidth()/4, 3*view.getHeight()/4);
-        botR = new Position(3*view.getWidth()/4, 3*view.getHeight()/4);
+        view.post(new Runnable() {
+            @Override
+            public void run() {
+                root = new Position(view.getWidth()/2, view.getHeight()/2);
+                topL = new Position(view.getWidth()/4, view.getHeight()/4);
+                topR = new Position(3*view.getWidth()/4, view.getHeight()/4);
+                botL = new Position(view.getWidth()/4, 3*view.getHeight()/4);
+                botR = new Position(3*view.getWidth()/4, 3*view.getHeight()/4);
+                view.addNode(root.x, root.y);
+                view.addNode(topL.x, topL.y);
+                view.addNode(topR.x, topR.y);
+                view.addNode(botL.x, botL.y);
+                view.addNode(botR.x, botR.y);
+            }
+        });
+    }
 
-        view.addNode(root.x, root.y);
+    public int nodeUnderTouch(double x, double y){
+        if (looseEq(x, root.x) && looseEq(y, root.y)){
+            return 0;
+        }
+        return -1;
+    }
+
+    public boolean looseEq(double a, double b){
+        return a >= b - 5 && a <= b + 5;
     }
 }
