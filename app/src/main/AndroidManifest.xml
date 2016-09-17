@@ -3,10 +3,9 @@
     package="rafiz.sooham.immerse">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.camera2" />
-
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.CaptureActivity_" android:noHistory="true"/>
+        <activity android:name=".views.CaptureActivity_"/>
         <activity android:name=".views.SetActivity_" android:noHistory="true"/>
         <activity android:name=".views.ViewActivity_" android:noHistory="true"/>
     </application>

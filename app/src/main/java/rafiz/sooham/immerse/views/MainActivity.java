@@ -8,12 +8,13 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 
 import rafiz.sooham.immerse.R;
+import rafiz.sooham.immerse.core.Core;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
     @AfterViews
     protected void init(){
-
+        Core.INIT(this, this);
     }
 
     @Click(R.id.start_btn)
