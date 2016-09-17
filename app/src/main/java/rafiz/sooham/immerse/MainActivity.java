@@ -1,13 +1,16 @@
 package rafiz.sooham.immerse;
 
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
+import com.orhanobut.logger.Logger;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+
+@EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    @AfterViews
+    protected void init(){
+        Logger.init("DEBUG").hideThreadInfo().methodCount(4);
     }
 }
