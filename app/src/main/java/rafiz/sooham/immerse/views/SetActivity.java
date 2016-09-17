@@ -91,6 +91,7 @@ public class SetActivity extends AppCompatActivity {
                         break;
                     }
                     case MotionEvent.ACTION_UP: {
+                        // end
                         currNode = -1;
                         moving = false;
                         break;

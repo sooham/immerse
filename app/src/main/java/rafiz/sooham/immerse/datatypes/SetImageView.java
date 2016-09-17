@@ -61,11 +61,13 @@ public class SetImageView extends ImageView {
     }
 
     private void drawEdges(Canvas canvas){
+        // connecting center point to corner points
         canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(1).x, nodes.get(1).y, p);
         canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(2).x, nodes.get(2).y, p);
         canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(3).x, nodes.get(3).y, p);
         canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(4).x, nodes.get(4).y, p);
 
+        // extending lines
         Position p1 = getProject(nodes.get(0), nodes.get(1));
         canvas.drawLine(nodes.get(1).x, nodes.get(1).y, p1.x, p1.y, p);
         Position p2 = getProject(nodes.get(0), nodes.get(2));
@@ -75,6 +77,7 @@ public class SetImageView extends ImageView {
         Position p4 = getProject(nodes.get(0), nodes.get(4));
         canvas.drawLine(nodes.get(4).x, nodes.get(4).y, p4.x, p4.y, p);
 
+        // connecting corner points
         canvas.drawLine(nodes.get(1).x, nodes.get(1).y, nodes.get(2).x, nodes.get(2).y, p);
         canvas.drawLine(nodes.get(2).x, nodes.get(2).y, nodes.get(4).x, nodes.get(4).y, p);
         canvas.drawLine(nodes.get(3).x, nodes.get(3).y, nodes.get(1).x, nodes.get(1).y, p);
@@ -97,5 +100,70 @@ public class SetImageView extends ImageView {
         }
         project.set((float) (end.x + 750 * Math.sin(a)), (float) (end.y + 750 * Math.cos(a)));
         return project;
+    }
+
+    private double getAngle(Position start, Position end) {
+        double a = Math.atan(Math.abs(Math.abs(start.y - end.y) / Math.abs(start.x - end.x)));
+        if (start.x >= end.x && start.y >= end.y){
+            a += Math.PI/2;
+            a *= -1;
+        } else if (start.x <= end.x && start.y >= end.y){
+            a += Math.PI/2;
+        } else if (start.x >= end.x && start.y <= end.y){
+            a -= Math.PI/2;
+        } else if (start.x <= end.x && start.y <= end.y){
+            a -= Math.PI/2;
+            a *= -1;
+        }
+        return a;
+    }
+
+    private Position getOuterCorner(Position root, Position corner, double initialAngle, int width, int height) {
+        Position outerCorner = new Position(0, 0);
+        double angle;
+        angle = getAngle(root, corner);
+
+        if (root.x > corner.x && root.y > corner.y) {
+            // topL
+            if (angle > initialAngle) {
+
+            } else if (angle < initialAngle) {
+
+            } else {
+                outerCorner.set(0, 0);
+            }
+
+        } else if (root.x > corner.x && root.y < corner.y) {
+            // botL
+            if (angle > initialAngle) {
+
+            } else if (angle < initialAngle) {
+
+            } else {
+                outerCorner.set(0, height);
+            }
+
+        } else if (root.x < corner.x && root.y > corner.y) {
+            // topR
+            if (angle > initialAngle) {
+
+            } else if (angle < initialAngle) {
+
+            } else {
+                outerCorner.set(width, 0);
+            }
+
+        } else if (root.x < corner.x && root.y < corner.y) {
+            // botR
+            if (angle > initialAngle) {
+
+            } else if (angle < initialAngle) {
+
+            } else {
+                outerCorner.set(width, height);
+            }
+        }
+
+        return outerCorner;
     }
 }
