@@ -23,10 +23,16 @@ public class Core {
         int REQUEST_PERMISSION = 1;
         String[] PERMISSIONS = {
                 Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
         };
         int camera_permission = ActivityCompat
                 .checkSelfPermission(context, Manifest.permission.CAMERA);
-        if (camera_permission != PackageManager.PERMISSION_GRANTED) {
+        int write_storage_permission = ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int read_storage_permission = ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (camera_permission != PackageManager.PERMISSION_GRANTED ||
+                write_storage_permission != PackageManager.PERMISSION_GRANTED ||
+                read_storage_permission != PackageManager.PERMISSION_GRANTED ) {
             ActivityCompat.requestPermissions(
                     activity,
                     PERMISSIONS,

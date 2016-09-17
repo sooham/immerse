@@ -28,19 +28,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import rafiz.sooham.immerse.R;
+import rafiz.sooham.immerse.core.Cons;
 
 @EActivity(R.layout.activity_capture)
 public class CaptureActivity extends AppCompatActivity {
 
     private static final int PICTURE_REQUEST = 1;
 
+    private final File imageFile = new File(Environment.getExternalStorageDirectory(),
+            "test/test.jpg");
+
     @AfterViews
     protected void init(){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
-            intent.putExtra(MediaStore.EXTRA_OUTPUT,
-                    Uri.fromFile(new File(Environment.getExternalStorageDirectory(),
-                            "test/test.jpg")));
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
             startActivityForResult(intent, PICTURE_REQUEST);
         }
     }
@@ -49,7 +51,9 @@ public class CaptureActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICTURE_REQUEST) {
             if (resultCode == RESULT_OK) {
-
+                Intent i = new Intent(this, SetActivity_.class);
+                i.putExtra(Cons.FILEPATH_EXTRA, imageFile.getAbsolutePath());
+                startActivity(i);
             }
         }
     }
