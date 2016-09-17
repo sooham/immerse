@@ -35,7 +35,7 @@ public class SetActivity extends AppCompatActivity {
     private Position root;
     private Position topL, topR, botL, botR;
 
-    private Position currNode;
+    private int currNode;
     private boolean moving;
 
     @AfterViews
@@ -51,23 +51,27 @@ public class SetActivity extends AppCompatActivity {
                 switch (action) {
                     case MotionEvent.ACTION_DOWN: {
                         // start
-                        int touch = nodeUnderTouch(event.getX(), event.getY());
-                        if (touch == 0){
-                            currNode = root;
+                        currNode = nodeUnderTouch(event.getX(), event.getY());
+                        if (currNode != -1){
                             moving = true;
                         }
                         break;
                     }
                     case MotionEvent.ACTION_MOVE: {
                         if (moving){
-                            currNode.x = event.getX();
-                            currNode.y = event.getY();
+                            switch (currNode){
+                                case 0:
+                                    root.x = event.getX();
+                                    root.y = event.getY();
+                                    break;
+                            }
+                            addNodes();
                             view.refresh();
                         }
                         break;
                     }
                     case MotionEvent.ACTION_UP: {
-                        currNode = null;
+                        currNode = -1;
                         moving = false;
                         break;
                     }
@@ -84,23 +88,28 @@ public class SetActivity extends AppCompatActivity {
                 topR = new Position(3*view.getWidth()/4, view.getHeight()/4);
                 botL = new Position(view.getWidth()/4, 3*view.getHeight()/4);
                 botR = new Position(3*view.getWidth()/4, 3*view.getHeight()/4);
-                view.addNode(root.x, root.y);
-                view.addNode(topL.x, topL.y);
-                view.addNode(topR.x, topR.y);
-                view.addNode(botL.x, botL.y);
-                view.addNode(botR.x, botR.y);
+                addNodes();
             }
         });
     }
 
-    public int nodeUnderTouch(double x, double y){
+    private void addNodes(){
+        view.clearNodes();
+        view.addNode(root.x, root.y);
+        view.addNode(topL.x, topL.y);
+        view.addNode(topR.x, topR.y);
+        view.addNode(botL.x, botL.y);
+        view.addNode(botR.x, botR.y);
+    }
+
+    private int nodeUnderTouch(double x, double y){
         if (looseEq(x, root.x) && looseEq(y, root.y)){
             return 0;
         }
         return -1;
     }
 
-    public boolean looseEq(double a, double b){
-        return a >= b - 5 && a <= b + 5;
+    private boolean looseEq(double a, double b){
+        return a >= b - 100 && a <= b + 100;
     }
 }

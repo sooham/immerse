@@ -36,6 +36,10 @@ public class SetImageView extends ImageView {
         this.height = height;
     }
 
+    public void clearNodes(){
+        this.nodes.clear();
+    }
+
     public void addNode(float x, float y){
         nodes.add(new Position(x, y));
         this.invalidate();
@@ -55,10 +59,10 @@ public class SetImageView extends ImageView {
     }
 
     private void drawEdges(Canvas canvas){
-        canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(1).x*-1, nodes.get(1).y*-1, p);
-        canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(2).x*3, nodes.get(2).y*-5, p);
-        canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(3).x*-5, nodes.get(3).y*3, p);
-        canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(4).x*5, nodes.get(4).y*5, p);
+        canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(1).x, nodes.get(1).y, p);
+        canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(2).x, nodes.get(2).y, p);
+        canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(3).x, nodes.get(3).y, p);
+        canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(4).x, nodes.get(4).y, p);
 
         canvas.drawLine(nodes.get(1).x, nodes.get(1).y, nodes.get(2).x, nodes.get(2).y, p);
         canvas.drawLine(nodes.get(2).x, nodes.get(2).y, nodes.get(4).x, nodes.get(4).y, p);
