@@ -40,12 +40,12 @@ public class CaptureActivity extends AppCompatActivity {
 
     @AfterViews
     protected void init(){
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
-            startActivityForResult(intent, PICTURE_REQUEST);
-        }
-        //onActivityResult(PICTURE_REQUEST, RESULT_OK, null);
+//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
+//            startActivityForResult(intent, PICTURE_REQUEST);
+//        }
+        onActivityResult(PICTURE_REQUEST, RESULT_OK, null);
     }
 
     @Override
