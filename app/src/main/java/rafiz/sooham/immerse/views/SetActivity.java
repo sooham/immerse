@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import com.orhanobut.logger.Logger;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -140,5 +141,10 @@ public class SetActivity extends AppCompatActivity {
 
     private boolean looseEq(double a, double b){
         return a >= b - 100 && a <= b + 100;
+    }
+
+    @Click(R.id.set_btn)
+    protected void onSet(){
+
     }
 }
