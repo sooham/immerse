@@ -17,12 +17,13 @@ import java.io.File;
 
 import rafiz.sooham.immerse.R;
 import rafiz.sooham.immerse.core.Cons;
+import rafiz.sooham.immerse.datatypes.SetImageView;
 
 @EActivity(R.layout.activity_set)
 public class SetActivity extends AppCompatActivity {
 
     @ViewById(R.id.view)
-    ImageView view;
+    SetImageView view;
 
     private File imageFile;
 
@@ -32,6 +33,5 @@ public class SetActivity extends AppCompatActivity {
         imageFile = path.isEmpty() ? null : new File(path);
         Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
         view.setImageBitmap(bitmap);
-        Logger.d("Hello");
     }
 }

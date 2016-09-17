@@ -45,6 +45,7 @@ public class CaptureActivity extends AppCompatActivity {
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
             startActivityForResult(intent, PICTURE_REQUEST);
         }
+        //onActivityResult(PICTURE_REQUEST, RESULT_OK, null);
     }
 
     @Override
