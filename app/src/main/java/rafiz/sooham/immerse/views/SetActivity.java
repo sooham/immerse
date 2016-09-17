@@ -72,18 +72,30 @@ public class SetActivity extends AppCompatActivity {
                                 case 1:
                                     topL.x = event.getX();
                                     topL.y = event.getY();
+
+                                    topR.y = event.getY();
+                                    botL.x = event.getX();
                                     break;
                                 case 2:
                                     topR.x = event.getX();
                                     topR.y = event.getY();
+
+                                    topL.y = event.getY();
+                                    botR.x = event.getX();
                                     break;
                                 case 3:
                                     botL.x = event.getX();
                                     botL.y = event.getY();
+
+                                    topL.x = event.getX();
+                                    botR.y = event.getY();
                                     break;
                                 case 4:
                                     botR.x = event.getX();
                                     botR.y = event.getY();
+
+                                    topR.x = event.getX();
+                                    botL.y = event.getY();
                                     break;
                             }
                             addNodes();
