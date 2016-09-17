@@ -66,9 +66,6 @@ fabric.properties
 # OpenCV so files
 **/jniLibs/*
 
-# OpenCV Libs
-libraries/opencv/*
-
 .gradle
 /build/
 
