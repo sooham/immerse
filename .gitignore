@@ -62,3 +62,6 @@ fabric.properties
 
 # NDK generated
 **/obj
+
+#OpenCV so files
+**/jniLibs/*

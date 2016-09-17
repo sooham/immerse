@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_1448bddcc8729b2013efe050e72a614a88a8c533\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_8853b0b36122dcedea5c5051c28ec07f60ee6311\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_af3a47df42da77b68838c32eadae68b0727ce0ab\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\andre\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_b572c0e6a46ade496cd2c82d15f4703703c6f5a7\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="c4ad0c21a9200208581d8b1646b438c6edd4dc44">
+        <dex dex="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_d069d9c126e753f299f7ecb2cb58fee30e17b3b3\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_ebbb06b5d7fa1793c19e948311aa236a77f67fa4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_f25df2e6541cb8aa9020b20ca6913571b28e84ce\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="054e7c3bd5d1bc1a424b60c44276c4bcc33eb59c">
+        <dex dex="C:\Users\andre\Documents\Work\Hackathons\hackthenorth2016\immerse\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_f76761d863dd0919ff67c6cae56268e5fa554e85\classes.dex" />
+    </item>
+
+</items>
