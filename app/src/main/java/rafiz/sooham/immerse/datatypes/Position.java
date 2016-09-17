@@ -1,5 +1,7 @@
 package rafiz.sooham.immerse.datatypes;
 
+import org.opencv.core.Point;
+
 public class Position {
 
     public float x;
