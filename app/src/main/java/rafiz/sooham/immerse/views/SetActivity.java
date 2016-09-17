@@ -64,6 +64,22 @@ public class SetActivity extends AppCompatActivity {
                                     root.x = event.getX();
                                     root.y = event.getY();
                                     break;
+                                case 1:
+                                    topL.x = event.getX();
+                                    topL.y = event.getY();
+                                    break;
+                                case 2:
+                                    topR.x = event.getX();
+                                    topR.y = event.getY();
+                                    break;
+                                case 3:
+                                    botL.x = event.getX();
+                                    botL.y = event.getY();
+                                    break;
+                                case 4:
+                                    botR.x = event.getX();
+                                    botR.y = event.getY();
+                                    break;
                             }
                             addNodes();
                             view.refresh();
@@ -105,6 +121,14 @@ public class SetActivity extends AppCompatActivity {
     private int nodeUnderTouch(double x, double y){
         if (looseEq(x, root.x) && looseEq(y, root.y)){
             return 0;
+        } else if (looseEq(x, topL.x) && looseEq(y, topL.y)){
+            return 1;
+        }else if (looseEq(x, topR.x) && looseEq(y, topR.y)){
+            return 2;
+        } else if (looseEq(x, botL.x) && looseEq(y, botL.y)){
+            return 3;
+        } else if (looseEq(x, botR.x) && looseEq(y, botR.y)){
+            return 4;
         }
         return -1;
     }

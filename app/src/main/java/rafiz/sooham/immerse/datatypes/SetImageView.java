@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,9 +66,36 @@ public class SetImageView extends ImageView {
         canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(3).x, nodes.get(3).y, p);
         canvas.drawLine(nodes.get(0).x, nodes.get(0).y, nodes.get(4).x, nodes.get(4).y, p);
 
+        Position p1 = getProject(nodes.get(0), nodes.get(1));
+        canvas.drawLine(nodes.get(1).x, nodes.get(1).y, p1.x, p1.y, p);
+        Position p2 = getProject(nodes.get(0), nodes.get(2));
+        canvas.drawLine(nodes.get(2).x, nodes.get(2).y, p2.x, p2.y, p);
+        Position p3 = getProject(nodes.get(0), nodes.get(3));
+        canvas.drawLine(nodes.get(3).x, nodes.get(3).y, p3.x, p3.y, p);
+        Position p4 = getProject(nodes.get(0), nodes.get(4));
+        canvas.drawLine(nodes.get(4).x, nodes.get(4).y, p4.x, p4.y, p);
+
         canvas.drawLine(nodes.get(1).x, nodes.get(1).y, nodes.get(2).x, nodes.get(2).y, p);
         canvas.drawLine(nodes.get(2).x, nodes.get(2).y, nodes.get(4).x, nodes.get(4).y, p);
         canvas.drawLine(nodes.get(3).x, nodes.get(3).y, nodes.get(1).x, nodes.get(1).y, p);
         canvas.drawLine(nodes.get(4).x, nodes.get(4).y, nodes.get(3).x, nodes.get(3).y, p);
+    }
+
+    private Position getProject(Position start, Position end){
+        Position project = new Position(0, 0);
+        double a = Math.atan(Math.abs(Math.abs(start.y - end.y) / Math.abs(start.x - end.x)));
+        if (start.x >= end.x && start.y >= end.y){
+            a += Math.PI/2;
+            a *= -1;
+        } else if (start.x <= end.x && start.y >= end.y){
+            a += Math.PI/2;
+        } else if (start.x >= end.x && start.y <= end.y){
+            a -= Math.PI/2                       ;
+        } else if (start.x <= end.x && start.y <= end.y){
+            a -= Math.PI/2;
+            a *= -1;
+        }
+        project.set((float) (end.x + 500 * Math.sin(a)), (float) (end.y + 500 * Math.cos(a)));
+        return project;
     }
 }
