@@ -59,6 +59,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 import rafiz.sooham.immerse.R;
 import rafiz.sooham.immerse.core.Cons;
 
@@ -123,13 +125,8 @@ public class CaptureActivity extends AppCompatActivity {
 
     @AfterViews
     protected void init(){
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (intent.resolveActivity(getPackageManager()) != null) {
-//            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
-//            startActivityForResult(intent, PICTURE_REQUEST);
-//        }
-//        onActivityResult(PICTURE_REQUEST, RESULT_OK, null);
         context = this;
+        Crouton.makeText(this, "Capture source image.", Style.INFO).show();
         preview.setSurfaceTextureListener(textureListener);
     }
     protected void createCameraPreview() {
