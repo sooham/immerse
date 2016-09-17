@@ -19,6 +19,8 @@ import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
 
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 import rafiz.sooham.immerse.R;
 import rafiz.sooham.immerse.core.Cons;
 import rafiz.sooham.immerse.datatypes.Position;
@@ -40,6 +42,8 @@ public class SetActivity extends AppCompatActivity {
 
     @AfterViews
     protected void init(){
+        Crouton.makeText(this, "Please set critical points", Style.INFO).show();
+
         String path = getIntent().getStringExtra(Cons.FILEPATH_EXTRA);
         imageFile = path.isEmpty() ? null : new File(path);
         Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());

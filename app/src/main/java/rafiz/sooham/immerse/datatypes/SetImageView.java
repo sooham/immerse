@@ -95,7 +95,7 @@ public class SetImageView extends ImageView {
             a -= Math.PI/2;
             a *= -1;
         }
-        project.set((float) (end.x + 500 * Math.sin(a)), (float) (end.y + 500 * Math.cos(a)));
+        project.set((float) (end.x + 750 * Math.sin(a)), (float) (end.y + 750 * Math.cos(a)));
         return project;
     }
 }
