@@ -29,6 +29,8 @@ public class Processor {
     public static final String TASK = "Processor";
     private static Camera mcamera;
 
+    static{System.loadLibrary("opencv_java3"); }
+
     public Processor() {
         mcamera = Camera.open();
     }
