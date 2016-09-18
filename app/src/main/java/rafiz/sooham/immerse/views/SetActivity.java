@@ -175,7 +175,7 @@ public class SetActivity extends AppCompatActivity {
             @Override
             public void call() {
                 loading.dismiss();
-                startActivity(new Intent(context, ViewActivity_.class));
+                startActivity(new Intent(context, ViewActivity.class));
             }
         });
         Processor.getSpideryMesh(imageFile.getAbsolutePath(), root, topL, topR, botL, botR);

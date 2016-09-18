@@ -10,7 +10,9 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.camera2.full" />
-    <uses-feature android:glEsVersion="0x00020000" />
+
+    <!-- Tell the system this app requires OpenGL ES 2.0. -->
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -36,7 +38,7 @@
             android:noHistory="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".views.ViewActivity_"
+            android:name=".views.ViewActivity"
             android:noHistory="true"
             android:screenOrientation="portrait" />
     </application>
