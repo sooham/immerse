@@ -157,6 +157,6 @@ public class SetActivity extends AppCompatActivity {
 
     @Click(R.id.set_btn)
     protected void onSet(){
-
+        startActivity(new Intent(this, ViewActivity_.class));
     }
 }
