@@ -132,13 +132,11 @@ public class Processor {
         Mat pres_transform_right = Imgproc.getPerspectiveTransform(right_ROI_points, transformed_right);
 
         // You've got all the transformation matrices, now run transform on all
-        ArrayList<Mat> result;
+        List<Mat> result = new ArrayList<>();
 
         callback.call();
         return result;
     }
-
-
 
     // Return focal distance in millimeters
     public static double getFocalDistance() {
