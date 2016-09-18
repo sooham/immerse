@@ -1,8 +1,10 @@
 package rafiz.sooham.immerse.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -20,12 +22,15 @@ import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import rafiz.sooham.immerse.R;
+import rafiz.sooham.immerse.callbacks.ProcessorCallback;
 import rafiz.sooham.immerse.core.Cons;
 import rafiz.sooham.immerse.datatypes.Position;
 import rafiz.sooham.immerse.datatypes.SetImageView;
+import rafiz.sooham.immerse.processor.Processor;
 
 @EActivity(R.layout.activity_set)
 public class SetActivity extends AppCompatActivity {
@@ -40,10 +45,13 @@ public class SetActivity extends AppCompatActivity {
 
     private int currNode;
     private boolean moving;
+    private Context context;
 
     @AfterViews
     protected void init(){
         Crouton.makeText(this, "Please set critical points", Style.INFO).show();
+
+        context = this;
 
         String path = getIntent().getStringExtra(Cons.FILEPATH_EXTRA);
         imageFile = path.isEmpty() ? null : new File(path);
@@ -157,6 +165,19 @@ public class SetActivity extends AppCompatActivity {
 
     @Click(R.id.set_btn)
     protected void onSet(){
-        startActivity(new Intent(this, ViewActivity_.class));
+        final SweetAlertDialog loading = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        loading.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        loading.setTitleText("Loading");
+        loading.setCancelable(false);
+        loading.show();
+
+        Processor.setCallback(new ProcessorCallback() {
+            @Override
+            public void call() {
+                loading.dismiss();
+                startActivity(new Intent(context, ViewActivity_.class));
+            }
+        });
+        Processor.getSpideryMesh(imageFile.getAbsolutePath(), root, topL, topR, botL, botR);
     }
 }

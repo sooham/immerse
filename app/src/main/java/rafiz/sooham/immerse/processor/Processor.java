@@ -1,4 +1,5 @@
 package rafiz.sooham.immerse.processor;
+import rafiz.sooham.immerse.callbacks.ProcessorCallback;
 import rafiz.sooham.immerse.datatypes.Position;
 
 import android.hardware.Camera;
@@ -29,20 +30,31 @@ public class Processor {
     public static final String TASK = "Processor";
     private static Camera mcamera;
 
+    private static ProcessorCallback callback;
+
     static{System.loadLibrary("opencv_java3"); }
 
     public Processor() {
         mcamera = Camera.open();
     }
 
+    public static void setCallback(ProcessorCallback callback){
+        Processor.callback = callback;
+    }
+
     /**
      *
      * @param filename name of image file to open
-     * @param vanishing_pt vanishing Point / Position (swap if using Position)
-     * @param inner_rect_pts Array of Point / Position, start from top left and goes anticlockwise.
      * @return list of Matrices corresponding to transformed planes extracted on image.
      */
-    public static List<Mat> getSpideryMesh(String filename, Point vanishing_pt, Point[] inner_rect_pts) {
+    public static List<Mat> getSpideryMesh(String filename, Position root, Position topL, Position topR, Position botL, Position botR) {
+
+        Point vanishing_pt = new Point(root.x, root.y);
+        Point[] inner_rect_pts = new Point[4];
+        inner_rect_pts[0] = new Point(topL.x, topL.y);
+        inner_rect_pts[1] = new Point(topR.x, topR.y);
+        inner_rect_pts[2] = new Point(botL.x, botL.y);
+        inner_rect_pts[3] = new Point(botR.x, botR.y);
 
         Log.d(TASK, "in getSpideryMesh");
         Log.d(TASK, "vanishing point = " + vanishing_pt);
@@ -64,12 +76,12 @@ public class Processor {
 
         if (width/image_sz.width > height/image_sz.height) {
             Log.d(TASK, "Expand to full width");
-            multiplier = (image_sz.width / width)
+            multiplier = (image_sz.width / width);
             height = height * multiplier;
             width = image_sz.width;
         } else {
             Log.d(TASK, "Expand to full height");
-            multiplier = (image_sz.width / width)
+            multiplier = (image_sz.width / width);
             width = width * multiplier;
             height = image_sz.height;
         }
@@ -83,7 +95,7 @@ public class Processor {
             Log.d(TASK, "outer_rect_pts[" + i +"] = "  + outer_rect_pts);
 
         }
-
+        callback.call();
         return null;
         // return perspectiveTransformPlanes();
 
