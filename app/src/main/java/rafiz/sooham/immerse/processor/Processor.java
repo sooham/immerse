@@ -1,4 +1,5 @@
 package rafiz.sooham.immerse.processor;
+import rafiz.sooham.immerse.datatypes.Position;
 
 import android.hardware.Camera;
 import android.os.Environment;

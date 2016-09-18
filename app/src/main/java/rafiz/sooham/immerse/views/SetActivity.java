@@ -14,11 +14,14 @@ import android.widget.ImageView;
 import com.orhanobut.logger.Logger;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
 
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 import rafiz.sooham.immerse.R;
 import rafiz.sooham.immerse.core.Cons;
 import rafiz.sooham.immerse.datatypes.Position;
@@ -40,6 +43,8 @@ public class SetActivity extends AppCompatActivity {
 
     @AfterViews
     protected void init(){
+        Crouton.makeText(this, "Please set critical points", Style.INFO).show();
+
         String path = getIntent().getStringExtra(Cons.FILEPATH_EXTRA);
         imageFile = path.isEmpty() ? null : new File(path);
         Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
@@ -67,18 +72,30 @@ public class SetActivity extends AppCompatActivity {
                                 case 1:
                                     topL.x = event.getX();
                                     topL.y = event.getY();
+
+                                    topR.y = event.getY();
+                                    botL.x = event.getX();
                                     break;
                                 case 2:
                                     topR.x = event.getX();
                                     topR.y = event.getY();
+
+                                    topL.y = event.getY();
+                                    botR.x = event.getX();
                                     break;
                                 case 3:
                                     botL.x = event.getX();
                                     botL.y = event.getY();
+
+                                    topL.x = event.getX();
+                                    botR.y = event.getY();
                                     break;
                                 case 4:
                                     botR.x = event.getX();
                                     botR.y = event.getY();
+
+                                    topR.x = event.getX();
+                                    botL.y = event.getY();
                                     break;
                             }
                             addNodes();
@@ -87,6 +104,7 @@ public class SetActivity extends AppCompatActivity {
                         break;
                     }
                     case MotionEvent.ACTION_UP: {
+                        // end
                         currNode = -1;
                         moving = false;
                         break;
@@ -135,5 +153,10 @@ public class SetActivity extends AppCompatActivity {
 
     private boolean looseEq(double a, double b){
         return a >= b - 100 && a <= b + 100;
+    }
+
+    @Click(R.id.set_btn)
+    protected void onSet(){
+        startActivity(new Intent(this, ViewActivity_.class));
     }
 }

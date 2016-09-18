@@ -47,6 +47,11 @@ dependencies {
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     compile 'com.github.orhanobut:logger:1.12'
+
+    compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
+    compile 'com.github.bhargavms:DotLoader:1.0.0'
 }
 
 android {
@@ -55,7 +60,7 @@ android {
 
     defaultConfig {
         applicationId "rafiz.sooham.immerse"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
