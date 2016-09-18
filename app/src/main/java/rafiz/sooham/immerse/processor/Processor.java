@@ -96,7 +96,7 @@ public class Processor {
 
         for (int i = 0; i < outer_rect_pts.length; i++) {
             outer_rect_pts[i] = new Point((inner_rect_pts[i].x - vanishing_pt.x) * multiplier + vanishing_pt.x, (inner_rect_pts[i].y - vanishing_pt.y) * multiplier + vanishing_pt.y);
-            Log.d(TASK, "outer_rect_pts[" + i +"] = "  + outer_rect_pts);
+            Log.d(TASK, "outer_rect_pts[" + i +"] = "  + outer_rect_pts[i].toString());
         }
 
         return perspectiveTransformPlanes(vanishing_pt, inner_rect_pts, outer_rect_pts);
